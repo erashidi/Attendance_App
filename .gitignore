@@ -1,5 +1,6 @@
 # Student/class data
 *.xlsx
+!Fake_Random_Names.xlsx
 
 # Python cache
 __pycache__/
