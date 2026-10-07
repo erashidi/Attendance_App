@@ -35,3 +35,34 @@ The application loads a class roster from an Excel file and displays students on
 3. Run:
 
    python attendance_app.py
+
+## Download
+
+A standalone Windows executable is available under the repository's **Releases** section.
+
+Download `attendance_app.exe` and run it directly. Python is not required.
+
+## Sample Roster Format
+
+The app expects an Excel file with student names in the first two columns:
+
+| First Name | Last Name |
+|------------|-----------|
+| Maya       | Chen      |
+| David      | Smith     |
+
+A fake sample roster is included in this repository as:
+
+`Fake_Random_Names.xlsx`
+
+## Run from Source
+
+1. Clone the repository
+2. Create and activate a virtual environment
+3. Install dependencies:
+
+   `pip install -r requirements.txt`
+
+4. Run:
+
+   `python attendance_app.py`
