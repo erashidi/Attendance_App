@@ -1,11 +1,3 @@
-# Attendance App
-# It takes an Excel Roster file, with student names
-# It then shows the student names on a window one by one and wait
-# for an input regarding attendance status:
-# 1 for present
-# 0 for absent
-# - for being physically present but not engaged and not following
-
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from datetime import date
@@ -61,10 +53,11 @@ def choose_roster():
 
 
 def record_attendance(value):
-    if not students:
+    global current_index
+
+    if not students or current_index >= len(students):
         return
 
-    global current_index
     attendance[current_index] = value
     current_index += 1
 
@@ -74,6 +67,7 @@ def record_attendance(value):
         other = attendance.count(-1)
         student_label.config(text="Finished!")
         progress_label.config(text=f"Present: {present}   Absent: {absent}   Not following: {other}")
+        status_button_frame.pack_forget()
         save_button.pack(pady=3)
         return
 
@@ -95,6 +89,7 @@ def go_previous():
 
     current_index -= 1
     attendance[current_index] = None
+    status_button_frame.pack(pady=(0, 8))
     save_button.pack_forget()
     show_current_student()
 
@@ -167,6 +162,26 @@ title_label.grid(row=0, column=0, padx=20)
 
 header_frame.grid_columnconfigure(0, weight=1)
 
+
+status_button_frame = tk.Frame(window)
+status_button_frame.pack(pady=(0, 8))
+
+present_button = tk.Button(
+    status_button_frame,
+    text="1 - Present",
+    width=14,
+    command=lambda: record_attendance(1),
+)
+present_button.grid(row=0, column=0, padx=5)
+
+absent_button = tk.Button(
+    status_button_frame,
+    text="0 - Absent",
+    width=14,
+    command=lambda: record_attendance(0),
+)
+absent_button.grid(row=0, column=1, padx=5)
+
 preview_label = tk.Label(
     window,
     text="",
@@ -176,7 +191,7 @@ preview_label = tk.Label(
 )
 preview_label.pack(pady=5)
 
-student_label = tk.Label(window, text="", font=("Arial", 65, "bold"))
+student_label = tk.Label(window, text="", font=("Arial", 36, "bold"))
 student_label.pack(expand=True, pady=30)
 
 bottom_frame = tk.Frame(window)

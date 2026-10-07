@@ -2,6 +2,10 @@
 
 A Python desktop application designed to streamline classroom attendance tracking.
 
+## Screenshot
+
+![Attendance App](assets/attendance_app.png)
+
 ## What It Does
 
 The application loads a class roster from an Excel file and displays students one at a time for attendance entry.
