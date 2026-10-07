@@ -1,3 +1,11 @@
+# Attendance App
+# It takes an Excel Roster file, with student names
+# It then shows the student names on a window one by one and wait
+# for an input regarding attendance status:
+# 1 for present
+# 0 for absent
+# - for being physically present but not engaged and not following
+
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from datetime import date
